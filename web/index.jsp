@@ -25,7 +25,7 @@
             <%--<input type="text" id="receiptInfo" value="操 作 收 据 信 息" disabled/>--%>
             <button type="button" id="receiptInfo" onclick="receiptInfo();">查 看 收 据</button>
             <br/>
-            <div style="width: 270px;height: 210px;background-color: white;margin-left:-46px">
+            <div style="width: 270px;height: 210px;background-color: white;margin:0 auto">
                 <%@include file="printBill.jsp" %>
             </div>
         </center>

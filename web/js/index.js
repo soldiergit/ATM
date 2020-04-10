@@ -50,7 +50,6 @@ digitButton.refresh = function refresh(state, visibility, servletName) {
 
 function readNum(obj) {
     var digit = Number(obj.value);
-    // console.log(digitButton);
     if (digitButton.state == 0) {
         submitNum(digit);
     } else if (digitButton.state == 1) {
@@ -70,10 +69,19 @@ $(document).ready(function () {
 });
 
 function refresh(resp) {
+    if(typeof (resp.ATM) == "undefined") {
+        alert("请选择你的操作，插卡或关机！");
+        return false;
+    }
+    // 更新ATM状态
     atm.refresh(resp.ATM.state);
+    // 更新屏幕对象状态
     display.refresh(resp.display.text);
+    // 更新按钮对象状态
     switchButton.refresh(resp.switchbutton.text, resp.switchbutton.disable);
+    // 更新插卡孔状态
     cardSlot.refresh(resp.cardslot.text, resp.cardslot.inserted);
+    // 更新数字按钮状态
     digitButton.refresh(resp.digitbutton.state, resp.digitbutton.visibility, resp.digitbutton.servletName);
 }
 
@@ -119,9 +127,20 @@ function submit() {
 }
 
 function cancel(){
-    $.post('/ATM/'+digitButton.servletName,'num=exitATM', function(responseText) {
-        refresh(responseText);
-    });
+    // 用户在输入取款金额过程中、输入存款金额过程中、输入转账账户过程中、输入转账金额过程中点击返回按钮时
+    if (digitButton.servletName == "WithdrawInfoServlet" ||
+        digitButton.servletName == "DepositInfoServlet" ||
+        digitButton.servletName == "TransferAccountServlet" ||
+        digitButton.servletName == "TransBalanceServlet") {
+        $.post('/ATM/CancelServlet', function(responseText) {
+            refresh(responseText);
+        });
+    } else {
+        // 取消输入密码
+        $.post('/ATM/'+digitButton.servletName,'num=exitATM', function(responseText) {
+            refresh(responseText);
+        });
+    }
 }
 
 function receiptInfo() {

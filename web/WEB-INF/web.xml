@@ -8,108 +8,130 @@
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
 
+    <!--返回当前ATM系统各个对象的状态-->
     <servlet>
         <servlet-name>GetStatusServlet</servlet-name>
         <servlet-class>servlet.GetStatusServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>TurnOnServlet</servlet-name>
-        <servlet-class>servlet.TurnOnServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>TurnOffServlet</servlet-name>
-        <servlet-class>servlet.TurnOffServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>CardInsertedServlet</servlet-name>
-        <servlet-class>servlet.CardInsertedServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>AuthServlet</servlet-name>
-        <servlet-class>servlet.AuthServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>TransactionServlet</servlet-name>
-        <servlet-class>servlet.TransactionServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>DepositInfoServlet</servlet-name>
-        <servlet-class>servlet.TransactionExtend.DepositInfoServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>DepositPrintServlet</servlet-name>
-        <servlet-class>servlet.TransactionExtend.DepositPrintServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>InquiryServlet</servlet-name>
-        <servlet-class>servlet.TransactionExtend.InquiryServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>TransBalanceServlet</servlet-name>
-        <servlet-class>servlet.TransactionExtend.TransBalanceServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>TransferAccountServlet</servlet-name>
-        <servlet-class>servlet.TransactionExtend.TransferAccountServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>WithdrawInfoServlet</servlet-name>
-        <servlet-class>servlet.TransactionExtend.WithdrawInfoServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>WithdrawPrintServlet</servlet-name>
-        <servlet-class>servlet.TransactionExtend.WithdrawPrintServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>GetStatusServlet</servlet-name>
         <url-pattern>/GetStatusServlet</url-pattern>
     </servlet-mapping>
+    <!--开启ATM-->
+    <servlet>
+        <servlet-name>TurnOnServlet</servlet-name>
+        <servlet-class>servlet.TurnOnServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>TurnOnServlet</servlet-name>
         <url-pattern>/TurnOnServlet</url-pattern>
     </servlet-mapping>
+    <!--关闭ATM-->
+    <servlet>
+        <servlet-name>TurnOffServlet</servlet-name>
+        <servlet-class>servlet.TurnOffServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>TurnOffServlet</servlet-name>
         <url-pattern>/TurnOffServlet</url-pattern>
     </servlet-mapping>
+    <!--插入银行卡-->
+    <servlet>
+        <servlet-name>CardInsertedServlet</servlet-name>
+        <servlet-class>servlet.CardInsertedServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CardInsertedServlet</servlet-name>
         <url-pattern>/CardInsertedServlet</url-pattern>
     </servlet-mapping>
+    <!--验证密码-->
+    <servlet>
+        <servlet-name>AuthServlet</servlet-name>
+        <servlet-class>servlet.AuthServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AuthServlet</servlet-name>
         <url-pattern>/AuthServlet</url-pattern>
     </servlet-mapping>
+    <!--用户在输入取款金额过程中、输入存款金额过程中、输入转账账户过程中、输入转账金额过程中点击返回按钮时-->
+    <servlet>
+        <servlet-name>CancelServlet</servlet-name>
+        <servlet-class>servlet.CancelServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CancelServlet</servlet-name>
+        <url-pattern>/CancelServlet</url-pattern>
+    </servlet-mapping>
+    <!--选择一个交易（存款，取款，查询）-->
+    <servlet>
+        <servlet-name>TransactionServlet</servlet-name>
+        <servlet-class>servlet.TransactionServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>TransactionServlet</servlet-name>
         <url-pattern>/TransactionServlet</url-pattern>
     </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>WithdrawInfoServlet</servlet-name>
-        <url-pattern>/WithdrawInfoServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>WithdrawPrintServlet</servlet-name>
-        <url-pattern>/WithdrawPrintServlet</url-pattern>
-    </servlet-mapping>
+    <!--存款-->
+    <servlet>
+        <servlet-name>DepositInfoServlet</servlet-name>
+        <servlet-class>servlet.TransactionExtend.DepositInfoServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>DepositInfoServlet</servlet-name>
         <url-pattern>/DepositInfoServlet</url-pattern>
     </servlet-mapping>
+    <!--存款凭条打印-->
+    <servlet>
+        <servlet-name>DepositPrintServlet</servlet-name>
+        <servlet-class>servlet.TransactionExtend.DepositPrintServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>DepositPrintServlet</servlet-name>
         <url-pattern>/DepositPrintServlet</url-pattern>
     </servlet-mapping>
+    <!--查询账户信息后-->
+    <servlet>
+        <servlet-name>InquiryServlet</servlet-name>
+        <servlet-class>servlet.TransactionExtend.InquiryServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>InquiryServlet</servlet-name>
         <url-pattern>/InquiryServlet</url-pattern>
     </servlet-mapping>
+    <!--执行转账-->
+    <servlet>
+        <servlet-name>TransBalanceServlet</servlet-name>
+        <servlet-class>servlet.TransactionExtend.TransBalanceServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>TransBalanceServlet</servlet-name>
         <url-pattern>/TransBalanceServlet</url-pattern>
     </servlet-mapping>
+    <!--转账收款方校验-->
+    <servlet>
+        <servlet-name>TransferAccountServlet</servlet-name>
+        <servlet-class>servlet.TransactionExtend.TransferAccountServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>TransferAccountServlet</servlet-name>
         <url-pattern>/TransferAccountServlet</url-pattern>
+    </servlet-mapping>
+    <!--获取取款金额,执行扣款-->
+    <servlet>
+        <servlet-name>WithdrawInfoServlet</servlet-name>
+        <servlet-class>servlet.TransactionExtend.WithdrawInfoServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>WithdrawInfoServlet</servlet-name>
+        <url-pattern>/WithdrawInfoServlet</url-pattern>
+    </servlet-mapping>
+    <!--取款-->
+    <servlet>
+        <servlet-name>WithdrawPrintServlet</servlet-name>
+        <servlet-class>servlet.TransactionExtend.WithdrawPrintServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>WithdrawPrintServlet</servlet-name>
+        <url-pattern>/WithdrawPrintServlet</url-pattern>
     </servlet-mapping>
 </web-app>

@@ -120,7 +120,7 @@ public class Account {
                 ATM.getInstance().getDisplay().setText("收款账号：【" + cardNo + "】,请输入转账金额：");
                 ATM.getInstance().getDigitButton().stateChange(1, 0, "TransBalanceServlet");
             } else {
-                ATM.getInstance().getDisplay().setText("账号无效不存在或不能为自己，请重新输入：");
+                ATM.getInstance().getDisplay().setText("账号无效不存在，请重新输入：");
             }
         }
     }
