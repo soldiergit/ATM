@@ -15,7 +15,7 @@ import java.io.IOException;
  * @Version 1.0
  * @Description:存款
  */
-public class DepositInfoServlet extends HttpServlet {
+public class DepositServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 	

@@ -17,14 +17,14 @@ import java.io.IOException;
  * @Version 1.0
  * @Description:执行转账
  */
-public class TransBalanceServlet extends HttpServlet {
+public class TransferBalanceServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 	
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		int options = Integer.parseInt(req.getParameter("num"));
 		// 执行转账
-		Account.transfer(options,req);
+        ATM.getInstance().getSession().getAccount().transfer(options,req);
 		String json = ATM.getInstance().getResponse();
 		resp.setContentType("text/json");  
 		resp.setCharacterEncoding("UTF-8"); 

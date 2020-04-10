@@ -42,9 +42,6 @@ public class Account {
 
     /**
      * 取款
-     *
-     * @param amount
-     * @return 0:成功 1:不成功
      */
     public int withdraw(double amount) {
         //判断账户当前余额是否足够扣款
@@ -66,18 +63,7 @@ public class Account {
     }
 
     /**
-     * 获取账户余额
-     *
-     * @return
-     */
-    public double getBalance() {
-        return this.balance;
-    }
-
-    /**
      * 存款
-     *
-     * @param amount
      */
     public int deposit(double amount) {
         ATM machine = ATM.getInstance();
@@ -97,17 +83,15 @@ public class Account {
 
         } else {
             machine.getDisplay().setText("一次存款不得超过10000，请重新输入存款金额：");
-            machine.getDigitButton().stateChange(1, 0, "DepositInfoServlet");
+            machine.getDigitButton().stateChange(1, 0, "DepositServlet");
         }
         return 1;
     }
 
     /**
      * 判断账户【转账收款方】是否存在
-     *
-     * @param cardNo
      */
-    public static void verifyReceivingParty(int cardNo) {
+    public void verifyReceivingParty(int cardNo) {
         Account a1 = ATM.getInstance().getSession().getAccount();
 
         if (cardNo > 0 || a1.getCardNo() != cardNo) {
@@ -118,7 +102,7 @@ public class Account {
                 a.setCardNo(cardNo);
                 t.setOtherAccount(a);
                 ATM.getInstance().getDisplay().setText("收款账号：【" + cardNo + "】,请输入转账金额：");
-                ATM.getInstance().getDigitButton().stateChange(1, 0, "TransBalanceServlet");
+                ATM.getInstance().getDigitButton().stateChange(1, 0, "TransferBalanceServlet");
             } else {
                 ATM.getInstance().getDisplay().setText("账号无效不存在，请重新输入：");
             }
@@ -127,12 +111,8 @@ public class Account {
 
     /**
      * 转账
-     *
-     * @param options
-     * @param req
      */
-    public static void transfer(int options, HttpServletRequest req) {
-        System.out.println("金额：" + options);
+    public void transfer(int options, HttpServletRequest req) {
 
         Account a1 = ATM.getInstance().getSession().getAccount();
         Transfer t = (Transfer) ATM.getInstance().getSession().getTransaction();
@@ -150,11 +130,25 @@ public class Account {
             req.getSession().setAttribute("voucher", voucher);
 
             ATM.getInstance().getDisplay().setText("转账成功，是否打印凭条 <br>" + "打印:1 不打印:0");
-            ATM.getInstance().getDigitButton().stateChange(0, 0, "WithdrawPrintServlet");
+            ATM.getInstance().getDigitButton().stateChange(0, 0, "TransactionPrintServlet");
         } else {
             ATM.getInstance().getDisplay().setText("余额不足，请重新输入：");
             ATM.getInstance().getDigitButton().stateChange(0, 0, "TransactionServlet");
         }
+    }
+
+    /**
+     * 修改密码
+     */
+    public int updatePWD(String pwd) {
+
+        boolean flag = LoginDao.updatePWD(this.cardNo, Integer.valueOf(pwd));
+
+        ATM.getInstance().getDisplay().setText("密码修改成功！" + "<br>" + "请按任意键退出，重新登录！");
+        ATM.getInstance().getDigitButton().stateChange(0, 0, "TransactionServlet");
+
+        if (flag) return 1;
+        else return 0;
     }
 
     public Account() {
@@ -195,6 +189,10 @@ public class Account {
 
     public void setBalance(Double balance) {
         this.balance = balance;
+    }
+
+    public double getBalance() {
+        return this.balance;
     }
 
     public int getSurplusInputNum() {

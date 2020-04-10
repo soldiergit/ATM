@@ -22,9 +22,10 @@ private static final long serialVersionUID = 1L;
 	
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		ATM machine = ATM.getInstance();
-		
+
+		//进入交易选择状态
 		machine.getSession().setState(3);
-		machine.getDisplay().setText("请选择您需要的业务："+"<br>"+"1:取款 2:存款 3:转账 4:查询  0:退出");
+		machine.getDisplay().setText("请选择您需要的业务："+"<br>"+"1:取款 2:存款 3:转账 4:查询 5:修改密码  0:退出");
 		machine.getDigitButton().stateChange(0, 1, "TransactionServlet");
 		
 		String json = ATM.getInstance().getResponse();

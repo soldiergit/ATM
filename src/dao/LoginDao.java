@@ -93,4 +93,16 @@ public class LoginDao {
         return DBUtil.executeUpdate(sql);
     }
 
+    /**
+     * 修改密码
+     * @param cardNo
+     * @param pwd
+     * @return
+     */
+    public static boolean updatePWD(int cardNo, int pwd) {
+        String sql = "update account_info set pwd =" + pwd +" where cardNo =" + cardNo;
+
+        return DBUtil.executeUpdate(sql);
+    }
+
 }

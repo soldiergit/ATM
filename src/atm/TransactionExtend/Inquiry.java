@@ -5,6 +5,8 @@ import atm.Session;
 import atm.Transaction;
 import banking.Account;
 
+import javax.servlet.http.HttpServletRequest;
+
 /**
  * @Author soldier
  * @Date 2020/3/23 18:42
@@ -32,5 +34,4 @@ public class Inquiry extends Transaction {
                 "请按任意键退出");
         machine.getDigitButton().stateChange(0, 0, "InquiryServlet");
     }
-
 }

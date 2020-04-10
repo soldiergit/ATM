@@ -1,6 +1,8 @@
 package servlet.TransactionExtend;
 
 import atm.ATM;
+import atm.Session;
+import banking.Account;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -9,22 +11,22 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * 获取取款金额,执行扣款
- *
- * @author 何希
- * @version 10/06/2018
+ * @Author soldier
+ * @Date 2020/4/10 15:26
+ * @Email:583406411@qq.com
+ * @Version 1.0
+ * @Description:修改用户密码
  */
-public class WithdrawInfoServlet extends HttpServlet {
+public class UpdatePWDServlet extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
 
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        //获取页面取款金额
-        int num = Integer.parseInt(req.getParameter("num"));
-        //设置即将取款金额
-        ATM.getInstance().getSession().getTransaction().setAmount(num);
-        //执行取款
-        ATM.getInstance().getSession().getTransaction().execute(req);
+        //获取页面输入的密码
+        String pwd = req.getParameter("num");
+        ATM.getInstance().getSession().getAccount().updatePWD(pwd);
+        // 更新机器状态（默认选择退出操作）
+        ATM.getInstance().getSession().setState(Session.CHOOSING);
         String json = ATM.getInstance().getResponse();
         resp.setContentType("text/json");
         resp.setCharacterEncoding("UTF-8");
@@ -32,6 +34,6 @@ public class WithdrawInfoServlet extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        doGet(req, resp);
+        doGet(req,resp);
     }
 }

@@ -128,10 +128,10 @@ function submit() {
 
 function cancel(){
     // 用户在输入取款金额过程中、输入存款金额过程中、输入转账账户过程中、输入转账金额过程中点击返回按钮时
-    if (digitButton.servletName == "WithdrawInfoServlet" ||
-        digitButton.servletName == "DepositInfoServlet" ||
+    if (digitButton.servletName == "WithdrawServlet" ||
+        digitButton.servletName == "DepositServlet" ||
         digitButton.servletName == "TransferAccountServlet" ||
-        digitButton.servletName == "TransBalanceServlet") {
+        digitButton.servletName == "TransferBalanceServlet") {
         $.post('/ATM/CancelServlet', function(responseText) {
             refresh(responseText);
         });

@@ -122,7 +122,7 @@ public class Session {
 
                             state = CHOOSING;
 
-                            instance.getDisplay().setText("请选择您需要的业务：" + "<br>" + "1:取款 2:存款 3:转账 4:查询  0:退出");
+                            instance.getDisplay().setText("请选择您需要的业务：" + "<br>" + "1:取款 2:存款 3:转账 4:查询 5:修改密码  0:退出");
                             instance.getDigitButton().stateChange(0, 1, "TransactionServlet");
 
                         }

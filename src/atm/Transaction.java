@@ -7,10 +7,7 @@
 
 package atm;
 
-import atm.TransactionExtend.Deposit;
-import atm.TransactionExtend.Inquiry;
-import atm.TransactionExtend.Transfer;
-import atm.TransactionExtend.Withdraw;
+import atm.TransactionExtend.*;
 import banking.Account;
 
 import javax.servlet.http.HttpServletRequest;
@@ -31,6 +28,7 @@ public class Transaction {
     public static final int TYPE_DEPOSIT = 2; // 存款交易
     public static final int TYPE_TRANSFER = 3; // 转账交易
     public static final int TYPE_INQUIRY = 4; // 查询
+    public static final int TYPE_UPDATEPWD = 5; // 修改密码
 
     // 会话的状态
     private int state = TRANS_UNSTART;
@@ -64,6 +62,9 @@ public class Transaction {
             case TYPE_INQUIRY:
                 tmp= new Inquiry(session,acct);
                 break;
+            case TYPE_UPDATEPWD:
+                tmp= new UpdatePWD(session,acct);
+                break;
             case TYPE_EXIT:
                 // 插卡孔状态要变 开关按钮状态要变 显示屏状态要变 数字键盘状态要变
                 ATM machine = ATM.getInstance();
@@ -81,13 +82,6 @@ public class Transaction {
      * 跳转到子类执行用户的请求
      */
     public void execute(HttpServletRequest request) { }
-
-    /**
-     * 跳转到子类处理打印
-     *
-     * @param flag 0:打印 1:不打印
-     */
-    public void print(int flag) { }
 
     /**
      * 获取金额

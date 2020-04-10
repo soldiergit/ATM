@@ -73,21 +73,12 @@
     </servlet-mapping>
     <!--存款-->
     <servlet>
-        <servlet-name>DepositInfoServlet</servlet-name>
-        <servlet-class>servlet.TransactionExtend.DepositInfoServlet</servlet-class>
+        <servlet-name>DepositServlet</servlet-name>
+        <servlet-class>servlet.TransactionExtend.DepositServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>DepositInfoServlet</servlet-name>
-        <url-pattern>/DepositInfoServlet</url-pattern>
-    </servlet-mapping>
-    <!--存款凭条打印-->
-    <servlet>
-        <servlet-name>DepositPrintServlet</servlet-name>
-        <servlet-class>servlet.TransactionExtend.DepositPrintServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>DepositPrintServlet</servlet-name>
-        <url-pattern>/DepositPrintServlet</url-pattern>
+        <servlet-name>DepositServlet</servlet-name>
+        <url-pattern>/DepositServlet</url-pattern>
     </servlet-mapping>
     <!--查询账户信息后-->
     <servlet>
@@ -100,12 +91,12 @@
     </servlet-mapping>
     <!--执行转账-->
     <servlet>
-        <servlet-name>TransBalanceServlet</servlet-name>
-        <servlet-class>servlet.TransactionExtend.TransBalanceServlet</servlet-class>
+        <servlet-name>TransferBalanceServlet</servlet-name>
+        <servlet-class>servlet.TransactionExtend.TransferBalanceServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>TransBalanceServlet</servlet-name>
-        <url-pattern>/TransBalanceServlet</url-pattern>
+        <servlet-name>TransferBalanceServlet</servlet-name>
+        <url-pattern>/TransferBalanceServlet</url-pattern>
     </servlet-mapping>
     <!--转账收款方校验-->
     <servlet>
@@ -118,20 +109,29 @@
     </servlet-mapping>
     <!--获取取款金额,执行扣款-->
     <servlet>
-        <servlet-name>WithdrawInfoServlet</servlet-name>
-        <servlet-class>servlet.TransactionExtend.WithdrawInfoServlet</servlet-class>
+        <servlet-name>WithdrawServlet</servlet-name>
+        <servlet-class>servlet.TransactionExtend.WithdrawServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>WithdrawInfoServlet</servlet-name>
-        <url-pattern>/WithdrawInfoServlet</url-pattern>
+        <servlet-name>WithdrawServlet</servlet-name>
+        <url-pattern>/WithdrawServlet</url-pattern>
     </servlet-mapping>
-    <!--取款-->
+    <!--修改密码-->
     <servlet>
-        <servlet-name>WithdrawPrintServlet</servlet-name>
-        <servlet-class>servlet.TransactionExtend.WithdrawPrintServlet</servlet-class>
+        <servlet-name>UpdatePWDServlet</servlet-name>
+        <servlet-class>servlet.TransactionExtend.UpdatePWDServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>WithdrawPrintServlet</servlet-name>
-        <url-pattern>/WithdrawPrintServlet</url-pattern>
+        <servlet-name>UpdatePWDServlet</servlet-name>
+        <url-pattern>/UpdatePWDServlet</url-pattern>
+    </servlet-mapping>
+    <!--交易凭条打印-->
+    <servlet>
+        <servlet-name>TransactionPrintServlet</servlet-name>
+        <servlet-class>servlet.TransactionPrintServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>TransactionPrintServlet</servlet-name>
+        <url-pattern>/TransactionPrintServlet</url-pattern>
     </servlet-mapping>
 </web-app>

@@ -25,7 +25,7 @@ public class TransferAccountServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		int options = Integer.parseInt(req.getParameter("num"));
 		// 校验转账收款方账号
-		Account.verifyReceivingParty(options);
+		ATM.getInstance().getSession().getAccount().verifyReceivingParty(options);
 		String json = ATM.getInstance().getResponse();
 		resp.setContentType("text/json");  
 		resp.setCharacterEncoding("UTF-8"); 

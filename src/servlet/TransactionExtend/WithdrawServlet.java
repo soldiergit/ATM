@@ -1,4 +1,4 @@
-package servlet;
+package servlet.TransactionExtend;
 
 import atm.ATM;
 
@@ -9,24 +9,22 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * @Author soldier
- * @Date 2020/4/10 13:11
- * @Email:583406411@qq.com
- * @Version 1.0
- * @Description:用户在输入取款金额过程中、输入存款金额过程中、输入转账账户过程中、输入转账金额过程中点击返回按钮时
+ * 获取取款金额,执行扣款
+ *
+ * @author 何希
+ * @version 10/06/2018
  */
-public class CancelServlet extends HttpServlet {
+public class WithdrawServlet extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
 
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        ATM machine = ATM.getInstance();
-
-        //进入交易选择状态
-        machine.getSession().setState(3);
-        machine.getDisplay().setText("请选择您需要的业务：" + "<br>" + "1:取款 2:存款 3:转账 4:查询 5:修改密码  0:退出");
-        machine.getDigitButton().stateChange(0, 1, "TransactionServlet");
-
+        //获取页面取款金额
+        int num = Integer.parseInt(req.getParameter("num"));
+        //设置即将取款金额
+        ATM.getInstance().getSession().getTransaction().setAmount(num);
+        //执行取款
+        ATM.getInstance().getSession().getTransaction().execute(req);
         String json = ATM.getInstance().getResponse();
         resp.setContentType("text/json");
         resp.setCharacterEncoding("UTF-8");

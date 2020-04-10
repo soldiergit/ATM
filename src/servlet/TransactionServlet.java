@@ -23,6 +23,7 @@ public class TransactionServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		Session currentSession = ATM.getInstance().getSession();
+		// 获取用户要进行的操作
 		int options = Integer.parseInt(req.getParameter("num"));
 		currentSession.selectTransaction(options);
 		String json = ATM.getInstance().getResponse();
