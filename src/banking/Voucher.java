@@ -16,9 +16,10 @@ public class Voucher {
     private int money;    //金额
     private Timestamp updateTime;    //操作时间
     private int cardNo;  //操作卡号
-    private int optionNum;   //业务类型
+//    private int optionNum;   //业务类型 1-取款 2-存款 3-转账
+    private String optionNum;   //业务类型 1-取款 2-存款 3-转账
 
-    public Voucher(int watercourse_num, int atm_id, int money, Timestamp updateTime, int cardNo, int optionNum) {
+    public Voucher(int watercourse_num, int atm_id, int money, Timestamp updateTime, int cardNo, String optionNum) {
         this.watercourse_num = watercourse_num;
         this.atm_id = atm_id;
         this.money = money;
@@ -68,11 +69,11 @@ public class Voucher {
         this.cardNo = cardNo;
     }
 
-    public int getOptionNum() {
+    public String getOptionNum() {
         return optionNum;
     }
 
-    public void setOptionNum(int optionNum) {
+    public void setOptionNum(String optionNum) {
         this.optionNum = optionNum;
     }
 

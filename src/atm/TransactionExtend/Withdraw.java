@@ -60,7 +60,7 @@ public class Withdraw extends Transaction {
                 int money = (int) this.getAmount();
                 //向数据库添加流水账单
 //                Voucher voucher = new PrintBillDao().saveBill(acc.getId(), money, acc.getCardNo(), 2);
-                Voucher voucher = new Voucher(1, 1, money, new Timestamp(System.currentTimeMillis()), acc.getCardNo(), 1);
+                Voucher voucher = new Voucher(1, 1, money, new Timestamp(System.currentTimeMillis()), acc.getCardNo(), "取款");
                 //相关打印信息存入session
                 request.getSession().setAttribute("voucher", voucher);
 

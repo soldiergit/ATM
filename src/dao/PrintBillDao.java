@@ -12,7 +12,7 @@ import java.util.HashMap;
  * @Date 2020/3/23 18:20
  * @Email:583406411@qq.com
  * @Version 1.0
- * @Description:该类用于封装打印账单所需的方法
+ * @Description:该类用于封装打印账单所需的方法 弃用
  */
 public class PrintBillDao {
 
@@ -74,9 +74,7 @@ public class PrintBillDao {
 
     /**
      * 封装数据库查询后获取到的Voucher对象
-     *
      * @param arrayList 数据库查询得到的list数据
-     * @return
      */
     public Voucher packageVoucher(ArrayList arrayList) {
         Voucher voucher = null;
@@ -90,7 +88,7 @@ public class PrintBillDao {
             Timestamp updateTime = (Timestamp) arrayList2.get("updateTime");
             int cardNo = (int) arrayList2.get("cardNo");
             int optionNum = (int) arrayList2.get("optionNum");
-            voucher = new Voucher(watercourse_num, atm_id, money, updateTime, cardNo, optionNum);
+            voucher = new Voucher(watercourse_num, atm_id, money, updateTime, cardNo, optionNum+"");
         }
         return voucher;
     }

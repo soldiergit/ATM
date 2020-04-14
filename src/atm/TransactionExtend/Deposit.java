@@ -59,7 +59,7 @@ public class Deposit extends Transaction {
                 //向数据库添加流水账单
                 int money = (int) this.getAmount();
 //                Voucher voucher = new PrintBillDao().saveBill(acc.getId(), money, acc.getCardNo(), 1);
-                Voucher voucher = new Voucher(1, 1, money, new Timestamp(System.currentTimeMillis()), acc.getCardNo(), 1);
+                Voucher voucher = new Voucher(1, 1, money, new Timestamp(System.currentTimeMillis()), acc.getCardNo(), "存款");
                 //相关打印信息存入session
                 req.getSession().setAttribute("voucher", voucher);
 

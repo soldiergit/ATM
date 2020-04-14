@@ -84,6 +84,14 @@ public class ATM {
 	}
 
 	/**
+	 * 当用户关闭或刷新ATM机操作页面时执行
+	 */
+	public static void refreshShutdownSystem() {
+		System.out.println("用户关闭或刷新ATM机操作页面!");
+		machine = new ATM();
+	}
+
+	/**
 	 * 开启ATM机
 	 */
 	public void turnon() {

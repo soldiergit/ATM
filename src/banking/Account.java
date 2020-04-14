@@ -14,6 +14,7 @@ import dao.LoginDao;
 import dao.PrintBillDao;
 
 import javax.servlet.http.HttpServletRequest;
+import java.sql.Timestamp;
 
 /**
  * 一个Account对象代表了现实世界里的一个银行账户.
@@ -111,6 +112,8 @@ public class Account {
 
     /**
      * 转账
+     * @param options   转账金额
+     * @param req       request对象
      */
     public void transfer(int options, HttpServletRequest req) {
 
@@ -125,7 +128,8 @@ public class Account {
             boolean flag1 = AccountDao.addMoney(options, a2.getCardNo());
 
             //向数据库添加流水账单
-            Voucher voucher = new PrintBillDao().saveBill(a1.getId(), options, a1.getCardNo(), 3);
+//            Voucher voucher = new PrintBillDao().saveBill(a1.getId(), options, a1.getCardNo(), 3);
+            Voucher voucher = new Voucher(1, 1, options, new Timestamp(System.currentTimeMillis()), a1.getCardNo(), "转账");
             //相关打印信息存入session
             req.getSession().setAttribute("voucher", voucher);
 

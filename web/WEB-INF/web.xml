@@ -134,4 +134,13 @@
         <servlet-name>TransactionPrintServlet</servlet-name>
         <url-pattern>/TransactionPrintServlet</url-pattern>
     </servlet-mapping>
+    <!--当用户关闭或刷新ATM机操作页面时执行-->
+    <servlet>
+        <servlet-name>RefreshShutdownSystemServlet</servlet-name>
+        <servlet-class>servlet.RefreshShutdownSystemServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RefreshShutdownSystemServlet</servlet-name>
+        <url-pattern>/RefreshShutdownSystemServlet</url-pattern>
+    </servlet-mapping>
 </web-app>
