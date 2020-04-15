@@ -7,11 +7,8 @@
         <packaging>war</packaging>
       </options>
     </properties>
-    <root id="archive" name="ATM.war">
+    <root id="archive" name="atm.war">
       <element id="artifact" artifact-name="atm:war exploded" />
-      <element id="directory" name="WEB-INF">
-        <element id="directory" name="classes" />
-      </element>
     </root>
   </artifact>
 </component>
