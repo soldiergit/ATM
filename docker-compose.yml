@@ -1,6 +1,6 @@
 version: '2'
 services:
-  项目名称:
+  atm:
     build: .
     image: soldierdocker/atm
     ports:
