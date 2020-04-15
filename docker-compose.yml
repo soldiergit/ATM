@@ -2,7 +2,7 @@ version: '2'
 services:
   项目名称:
     build: .
-    image: soldierdocker/ATM
+    image: soldierdocker/atm
     ports:
       - "8004:8080"
-    container_name: ATM
+    container_name: atm

@@ -140,7 +140,7 @@ public class ATM {
 	/**
 	 * 获取整个ATM系统各个对象的状态字符串. Json格式
 	 * 如果想了解这个函数到底返回什么内容，可以在浏览器中访问 
-	 * http://localhost:8081/ATM/GetStatusServlet
+	 * http://localhost:8081/atm/GetStatusServlet
 	 */
 	public String getResponse() {
 		String output = "{";

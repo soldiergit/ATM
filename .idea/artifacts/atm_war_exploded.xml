@@ -1,17 +1,17 @@
 <component name="ArtifactManager">
-  <artifact type="exploded-war" name="ATM:war exploded">
+  <artifact type="exploded-war" name="atm:war exploded">
     <output-path>$PROJECT_DIR$/target/ATM</output-path>
     <properties id="maven-jee-properties">
       <options>
         <exploded>true</exploded>
-        <module>ATM</module>
+        <module>atm</module>
         <packaging>war</packaging>
       </options>
     </properties>
     <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
-          <element id="module-output" name="ATM" />
+          <element id="module-output" name="atm" />
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="Maven: commons-beanutils:commons-beanutils:1.8.0" />
@@ -42,7 +42,7 @@
       <element id="directory" name="META-INF">
         <element id="file-copy" path="$PROJECT_DIR$/target/ATM/META-INF/MANIFEST.MF" />
       </element>
-      <element id="javaee-facet-resources" facet="ATM/web/Web" />
+      <element id="javaee-facet-resources" facet="atm/web/Web" />
     </root>
   </artifact>
 </component>

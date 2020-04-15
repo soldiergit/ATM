@@ -95,21 +95,21 @@ function refresh(resp) {
 
 // 返回当前ATM系统各个对象的状态
 function getStatus() {
-    $.post('/ATM/GetStatusServlet', function (responseText) {
+    $.post('/atm/GetStatusServlet', function (responseText) {
         refresh(responseText);
     });
 }
 
 // 开启ATM
 function turnon() {
-    $.post('/ATM/TurnOnServlet', function (responseText) {
+    $.post('/atm/TurnOnServlet', function (responseText) {
         refresh(responseText);
     });
 }
 
 // 关闭ATM
 function turnoff() {
-    $.post('/ATM/TurnOffServlet', function (responseText) {
+    $.post('/atm/TurnOffServlet', function (responseText) {
         refresh(responseText);
     });
 }
@@ -118,13 +118,13 @@ function turnoff() {
 function insertCard() {
     // 账号输入框
     var cardNo = window.prompt("请输入账号", "");
-    $.post('/ATM/CardInsertedServlet', 'cardNo=' + cardNo, function (responseText) {
+    $.post('/atm/CardInsertedServlet', 'cardNo=' + cardNo, function (responseText) {
         refresh(responseText);
     });
 }
 
 function submitNum(number) {
-    $.post('/ATM/' + digitButton.servletName, 'num=' + number, function (responseText) {
+    $.post('/atm/' + digitButton.servletName, 'num=' + number, function (responseText) {
         refresh(responseText);
         // 当用户提交后，重置
         num = 0;
@@ -143,12 +143,12 @@ function cancel() {
         digitButton.servletName == "TransferAccountServlet" ||
         digitButton.servletName == "TransferBalanceServlet" ||
         digitButton.servletName == "UpdatePWDServlet") {
-        $.post('/ATM/CancelServlet', function (responseText) {
+        $.post('/atm/CancelServlet', function (responseText) {
             refresh(responseText);
         });
     } else {
         // 取消输入密码
-        $.post('/ATM/' + digitButton.servletName, 'num=exitATM', function (responseText) {
+        $.post('/atm/' + digitButton.servletName, 'num=exitATM', function (responseText) {
             refresh(responseText);
         });
     }
@@ -156,8 +156,6 @@ function cancel() {
 
 // 刷新页面
 function receiptInfo() {
-    // window.location.reload();
-    console.log("查看收据");
     $("#printBillPage").attr("src", "printBill.jsp").ready();
 }
 
@@ -165,11 +163,11 @@ function receiptInfo() {
 $(function () {
     // 火狐浏览器刷新页面执行，360刷新、关闭都执行
     window.onunload = function () {
-        $.post("/ATM/RefreshShutdownSystemServlet");
+        $.post("/atm/RefreshShutdownSystemServlet");
     };
 
     // 火狐浏览器关闭页面执行，360刷新、关闭都执行
     window.onbeforeunload = function () {
-        $.post("/ATM/RefreshShutdownSystemServlet");
+        $.post("/atm/RefreshShutdownSystemServlet");
     };
 });
