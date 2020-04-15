@@ -21,7 +21,7 @@ before_install:
 - echo -e "Host $IP\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 #成功之后执行的脚本
 after_success:
-- docker login -u=$DOCKER_NAME -p="$DOCKER_PWD"
+- docker login -u=soldier_ali registry.cn-hangzhou.aliyuncs.com -p="$DOCKER_PWD"
 - docker push registry.cn-hangzhou.aliyuncs.com/soldier-hub/atm:latest
 - chmod 600 ~/.ssh/id_rsa
 - rsync -az --delete ./docker-compose.yml root@$IP:/usr/local/project_backup/atm/
