@@ -12,10 +12,10 @@ import java.sql.*;
  */
 public class DBUtil {
     private static String jdbcName = "com.mysql.jdbc.Driver";
-    private static String dbUrl = "jdbc:mysql://127.0.0.1:3306/bank?useUnicode=true&characterEncoding=utf-8";
-//    private static String dbUrl = "jdbc:mysql://116.62.48.112:3306/atm?useUnicode=true&characterEncoding=utf-8";
-    private String dbUserName = "root";
-//    private String dbUserName = "admin";
+//    private static String dbUrl = "jdbc:mysql://127.0.0.1:3306/bank?useUnicode=true&characterEncoding=utf-8";
+    private static String dbUrl = "jdbc:mysql://116.62.48.112:3306/atm?useUnicode=true&characterEncoding=utf-8";
+//    private String dbUserName = "root";
+    private String dbUserName = "admin";
     private String dbPassword = "123456";
 
     /**
