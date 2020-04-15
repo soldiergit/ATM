@@ -25,4 +25,4 @@ after_success:
 - docker push soldierdocker/atm:latest
 - chmod 600 ~/.ssh/id_rsa
 - rsync -az --delete ./docker-compose.yml root@$IP:/usr/local/project_backup/atm/
-- ssh -o "StrictHostKeyChecking no" -i id_rsa root@$IP "cd /usr/local/project_backup/atm/;docker-compose -f docker-compose.yml pull;sudo docker-compose -f docker-compose.yml up -d;exit"
+- ssh -o "StrictHostKeyChecking no" -i id_rsa root@$IP "cd /usr/local/project_backup/atm/;docker-compose -f docker-compose.yml pull;docker-compose -f docker-compose.yml up -d;exit"
