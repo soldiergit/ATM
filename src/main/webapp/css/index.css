@@ -1,95 +1,13 @@
-#main {
-    border: 1px solid;
-    width: 70%;
-    height: 600px;
-    background-color: #C0C0C0;
-    margin: 0 auto;
-}
-
 #display {
     border: 1px solid;
     display: inline-block;
-    width: 60%;
-    height: 400px;
-    background-color: #165F00;
-    margin-left: 20px;
+    background-color: #393D49;
     margin-top: 20px;
+    height: 400px;
     color: white;
     font-size: 24px;
 }
 
-#receipt {
-    float: right;
-    display: inline-block;
-    border: 1px solid;
-    width: 35%;
-    height: 500px;
-}
-
-#receiptInfo {
-    width: 80%;
-    height: 30px;
-    margin-top: 10px;
+.grid-demo{
     text-align: center;
-    font-size: large;
-}
-
-#area {
-    width: 80%;
-}
-
-.number {
-    width: 30%;
-    height: 25px;
-    font-size: large;
-    margin-top: 10px;
-}
-
-.command {
-    width: 40%;
-    height: 30px;
-    font-size: large;
-    margin-top: 10px;
-}
-
-#panel {
-    border: 0px solid;
-    width: 95%;
-    height: 40px;
-    margin-top: 25px;
-    margin-left: 35px;
-    font-size: large;
-    /*background-color:#7A82FF;*/
-    float: left;
-}
-
-#left_panel {
-    border: 1px solid;
-    width: 30%;
-    height: 40px;
-    margin-top: 0px;
-    display: inline-block;
-    background-color: #7A82FF;
-}
-
-#right_panel {
-    border: 1px solid;
-    width: 65%;
-    height: 40px;
-    display: inline-block;
-    background-color: #7A82FF;
-}
-
-#log {
-    border: 1px solid;
-    width: 20%;
-    height: 30px;
-    margin-top: 0px;
-    font-size: small;
-    display: inline;
-}
-
-.button {
-    width: 80px;
-    height: 40px;
 }

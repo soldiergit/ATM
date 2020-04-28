@@ -17,7 +17,7 @@ display.show = function show(text) {
     $("#display").html(text);
 };
 
-// 按钮对象
+// 开关机
 var switchButton = {text: "", disable: true};
 switchButton.refresh = function refresh(text, disable) {
     this.text = text;
@@ -29,7 +29,16 @@ switchButton.refresh = function refresh(text, disable) {
     } else if (atm.status == 1) {
         $("#switch").click(turnon);
     }
-    $("#switch").attr('disable', disable);
+    // 关机
+    if (disable) {
+        // $("#switch").prop('disabled', true);
+        // $("#switch").removeClass("layui-btn-danger");
+        // $("#switch").addClass("layui-btn-disabled")
+    } else {
+        // $("#switch").prop('disabled', false);
+        // $("#switch").removeClass("layui-btn-disabled");
+        // $("#switch").addClass("layui-btn-danger");
+    }
 };
 
 // 插卡孔
@@ -38,7 +47,17 @@ cardSlot.refresh = function refresh(text, inserted) {
     this.text = text;
     this.inserted = inserted;
     $("#card").html(text);
-    $("#card").attr('disable', inserted);
+    // $("#card").prop('disabled', inserted);
+    if (inserted) {
+        $("#card").prop('disabled', true);
+        $("#card").removeClass("layui-btn-warm");
+        $("#card").addClass("layui-btn-disabled")
+    } else {
+
+        $("#card").prop('disabled', false);
+        $("#card").removeClass("layui-btn-disabled");
+        $("#card").addClass("layui-btn-warm");
+    }
 };
 
 // 数字按钮

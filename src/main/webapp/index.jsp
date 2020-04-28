@@ -8,60 +8,130 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <script type="text/javascript" src="js/jquery.js"></script>
-    <script type="text/javascript" src="js/index.js"></script>
+    <meta charset="utf-8">
     <title>ATM</title>
-    <link href="css/index.css" rel="stylesheet" type="text/css"/>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="./layui/css/layui.css" media="all"/>
+    <link rel="stylesheet" href="./css/index.css" media="all"/>
 </head>
-<body bgcolor="#ffffff">
-
-<div id="main">
-
-    <!-- 荧屏 -->
-    <div id="display"></div>
-
-    <div id="receipt">
-        <center>
-            <button type="button" id="receiptInfo" onclick="receiptInfo();">查 看 收 据</button>
-            <br/>
-            <div style="width: 270px;height: 210px;background-color: white;margin:0 auto">
-                <iframe src="" id="printBillPage" style="width: 270px;height: 210px;"></iframe>
+<body>
+<div class="layui-container grid-demo">
+    <div class="layui-row" style="margin-top: 40px">
+        <div class="layui-col-xs6 layui-col-md12">
+            <div class="layui-bg-green"><h1>基于Web的自动取款机仿真系统</h1></div>
+        </div>
+    </div>
+    <div class="layui-row" style="margin-top: 20px">
+        <div class="layui-col-md12">
+            <div class="layui-row">
+                <!-- 荧屏 -->
+                <div class="layui-col-md7 layui-bg-gray" style="height: 619px">
+                    <div class="layui-col-md10 layui-col-md-offset1" id="display"></div>
+                </div>
+                <div class="layui-col-md5 layui-bg-gray" style="height: 619px">
+                    <div>
+                        <!--查看收据-->
+                        <div class="layui-row" style="margin-top: 20px;">
+                            <button type="button" class="layui-btn layui-btn-lg layui-btn-radius" id="receiptInfo" onclick="receiptInfo();">查看收据</button>
+                        </div>
+                        <!--收据信息-->
+                        <div class="layui-row" style="margin-top: 5px;">
+                            <div class="layui-col-md10 layui-col-md-offset1" style="background-color: white">
+                                <iframe src="" id="printBillPage" class="layui-col-md12"
+                                        style="height: 210px;"></iframe>
+                            </div>
+                        </div>
+                        <!--1-9按键-->
+                        <div class="layui-row layui-col-space10" style="margin-top: 10px;">
+                            <div class="layui-col-md4">
+                                <button type="button" class="layui-btn layui-btn-radius layui-btn-normal"
+                                        id="number" value="1" onclick="readNum(this);">1
+                                </button>
+                            </div>
+                            <div class="layui-col-md4">
+                                <button type="button" class="layui-btn layui-btn-radius layui-btn-normal"
+                                        id="b2" value="2" onclick="readNum(this);">2
+                                </button>
+                            </div>
+                            <div class="layui-col-md4">
+                                <button type="button" class="layui-btn layui-btn-radius layui-btn-normal"
+                                        id="b3" value="3" onclick="readNum(this);">3
+                                </button>
+                            </div>
+                        </div>
+                        <div class="layui-row layui-col-space10" style="margin-top: 30px;">
+                            <div class="layui-col-md4">
+                                <button type="button" class="layui-btn layui-btn-radius layui-btn-normal"
+                                        id="b4" value="4" onclick="readNum(this);">4
+                                </button>
+                            </div>
+                            <div class="layui-col-md4">
+                                <button type="button" class="layui-btn layui-btn-radius layui-btn-normal"
+                                        id="b5" value="5" onclick="readNum(this);">5
+                                </button>
+                            </div>
+                            <div class="layui-col-md4">
+                                <button type="button" class="layui-btn layui-btn-radius layui-btn-normal"
+                                        id="b6" value="6" onclick="readNum(this);">6
+                                </button>
+                            </div>
+                        </div>
+                        <div class="layui-row layui-col-space10" style="margin-top: 30px;">
+                            <div class="layui-col-md4">
+                                <button type="button" class="layui-btn layui-btn-radius layui-btn-normal"
+                                        id="b7" value="7" onclick="readNum(this);">7
+                                </button>
+                            </div>
+                            <div class="layui-col-md4">
+                                <button type="button" class="layui-btn layui-btn-radius layui-btn-normal"
+                                        id="b8" value="8" onclick="readNum(this);">8
+                                </button>
+                            </div>
+                            <div class="layui-col-md4">
+                                <button type="button" class="layui-btn layui-btn-radius layui-btn-normal"
+                                        id="b9" value="9" onclick="readNum(this);">9
+                                </button>
+                            </div>
+                        </div>
+                        <div class="layui-row layui-col-space10" style="margin-top: 30px;">
+                            <div class="layui-col-md4 layui-col-md-offset4">
+                                <button type="button" class="layui-btn layui-btn-radius layui-btn-normal"
+                                        id="b0" value="0" onclick="readNum(this);">0
+                                </button>
+                            </div>
+                        </div>
+                        <!--确认 取消-->
+                        <div class="layui-row layui-col-space10" style="margin-top: 10px;">
+                            <div class="layui-col-md6">
+                                <button type="button" class="layui-btn layui-btn-radius layui-btn-normal"
+                                        id="comfirm" onclick="submit();">确认
+                                </button>
+                            </div>
+                            <div class="layui-col-md6">
+                                <button type="button" class="layui-btn layui-btn-radius layui-btn-normal"
+                                        id="cancel" onclick="cancel();">取消
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </center>
-        <center>
-            <button type="button" id="b1" class="number" value="1" onclick="readNum(this);">1</button>
-            <button type="button" id="b2" class="number" value="2" onclick="readNum(this);">2</button>
-            <button type="button" id="b3" class="number" value="3" onclick="readNum(this);">3</button>
-            <button type="button" id="b4" class="number" value="4" onclick="readNum(this);">4</button>
-            <button type="button" id="b5" class="number" value="5" onclick="readNum(this);">5</button>
-            <button type="button" id="b6" class="number" value="6" onclick="readNum(this);">6</button>
-            <button type="button" id="b7" class="number" value="7" onclick="readNum(this);">7</button>
-            <button type="button" id="b8" class="number" value="8" onclick="readNum(this);">8</button>
-            <button type="button" id="b9" class="number" value="9" onclick="readNum(this);">9</button>
-            <button type="button" id="b0" class="number" value="0" onclick="readNum(this);">0</button>
-        </center>
-        <br/>
-        <center>
-            <button type="button" id="comfirm" class="command" onclick="submit();">确认</button>
-            <button type="button" id="cancel" class="command" onclick="cancel();">取消</button>
-        </center>
-    </div>
-
-    <!--div id="panel">
-        <div id="left_panel">
         </div>
-        <div id="right_panel">
-            <button type="button" id="log">显示日志</button>
-        </div>
-    </div-->
-    <div id="panel">
-        <!--button type="button" class="button" id="on" onclick="turnon();">开机</button>
-        <button type="button" class="button" id="off">关机</button-->
-        <button type="button" class="button" id="switch"></button>
-        <button type="button" class="button" id="card">插卡</button>
     </div>
-
+    <div class="layui-row" style="margin-top: 20px;">
+        <div class="layui-col-xs6 layui-col-md12 layui-bg-gray">
+            <button type="button" class="layui-btn layui-btn-lg layui-btn-radius layui-btn-danger" id="switch"></button>
+            <button type="button" class="layui-btn layui-btn-lg layui-btn-radius layui-btn-warm" id="card">插卡</button>
+        </div>
+    </div>
 </div>
-
+<script type="text/javascript" src="./layui/layui.js"></script>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
 </body>
 </html>
