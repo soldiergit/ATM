@@ -28,22 +28,27 @@
     </div>
     <div class="layui-row" style="margin-top: 20px">
         <div class="layui-col-md12">
-            <div class="layui-row">
-                <!-- 荧屏 -->
-                <div class="layui-col-md7 layui-bg-gray" style="height: 619px">
-                    <div class="layui-col-md10 layui-col-md-offset1" id="display"></div>
+            <%-- layui-col-space10设置列间距时，layui-col-md*上不能有任何样式，否则失效--%>
+            <div class="layui-row layui-col-space10">
+                <div class="layui-col-md7">
+                    <div class="layui-bg-gray" style="height: 620px">
+                        <!-- 荧屏 -->
+                        <div class="layui-row">
+                            <div class="layui-col-md10 layui-col-md-offset1" id="display"></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="layui-col-md5 layui-bg-gray" style="height: 619px">
-                    <div>
+                <div class="layui-col-md5">
+                    <div class="layui-bg-gray" style="height: 620px">
                         <!--查看收据-->
-                        <div class="layui-row" style="margin-top: 20px;">
+                        <div class="layui-row">
                             <button type="button" class="layui-btn layui-btn-lg layui-btn-radius" id="receiptInfo" onclick="receiptInfo();">查看收据</button>
                         </div>
                         <!--收据信息-->
                         <div class="layui-row" style="margin-top: 5px;">
                             <div class="layui-col-md10 layui-col-md-offset1" style="background-color: white">
                                 <iframe src="" id="printBillPage" class="layui-col-md12"
-                                        style="height: 210px;"></iframe>
+                                        style="height: 220px;"></iframe>
                             </div>
                         </div>
                         <!--1-9按键-->
@@ -123,7 +128,7 @@
             </div>
         </div>
     </div>
-    <div class="layui-row" style="margin-top: 20px;">
+    <div class="layui-row" style="margin-top: 20px">
         <div class="layui-col-xs6 layui-col-md12 layui-bg-gray">
             <button type="button" class="layui-btn layui-btn-lg layui-btn-radius layui-btn-danger" id="switch"></button>
             <button type="button" class="layui-btn layui-btn-lg layui-btn-radius layui-btn-warm" id="card">插卡</button>

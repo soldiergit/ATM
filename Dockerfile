@@ -3,7 +3,7 @@ FROM tomcat
 #Message(维修人员)
 MAINTAINER soldier<soldier_wyyx@163.com.com>
 #构建日期
-ENV REFRESHED_AT 2020-04-14
+ENV REFRESHED_AT 2020-04-29
 #切换镜像目录，进入/usr目录
 WORKDIR /usr/local/tomcat/webapps
 #复制编译后的文件

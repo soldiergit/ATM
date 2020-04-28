@@ -12,7 +12,7 @@ branches:
 #执行脚本
 script:
 - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
-- docker build . -t "registry.cn-hangzhou.aliyuncs.com/soldier-hub/atm:latest"
+- docker build . -t "soldierdocker/atm:latest"
 #安装之前执行脚本
 before_install:
 - openssl aes-256-cbc -K $encrypted_a7dfe7f624ec_key -iv $encrypted_a7dfe7f624ec_iv
@@ -21,8 +21,8 @@ before_install:
 - echo -e "Host $IP\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 #成功之后执行的脚本
 after_success:
-- docker login -u=soldier_ali registry.cn-hangzhou.aliyuncs.com -p="$DOCKER_PWD"
-- docker push registry.cn-hangzhou.aliyuncs.com/soldier-hub/atm:latest
+- docker login -u=$DOCKER_NAME -p="$DOCKER_PWD"
+- docker push soldierdocker/atm:latest
 - chmod 600 ~/.ssh/id_rsa
 - rsync -az --delete ./docker-compose.yml root@$IP:/usr/local/project_backup/atm/
 - ssh -o "StrictHostKeyChecking no" -i id_rsa root@$IP "cd /usr/local/project_backup/atm/;docker-compose -f docker-compose.yml pull;docker-compose -f docker-compose.yml up -d;exit"

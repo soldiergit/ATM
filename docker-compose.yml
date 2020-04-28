@@ -2,7 +2,7 @@ version: '2'
 services:
   atm:
     build: .
-    image: registry.cn-hangzhou.aliyuncs.com/soldier-hub/atm
+    image: soldierdocker/atm
     ports:
       - "8001:8080"
     container_name: atm
