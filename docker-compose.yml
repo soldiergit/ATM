@@ -1,8 +1,11 @@
 version: '2'
 services:
   atm:
+    # 构建当前项目
     build: .
     image: soldierdocker/atm
     ports:
       - "8001:8080"
+    # 8080是tomcat镜像内部运行端口，必须与Dockerfile一致
+    # 8001是服务器运行端口，给外部访问，为使用的是阿里云，必须给8001开放一个安全组
     container_name: atm
