@@ -3,7 +3,7 @@ services:
   atm:
     # 构建当前项目
     build: .
-    image: soldierdocker/atm
+    image: soldierdocker/atm:latest
     ports:
       - "8001:8080"
     # 8080是tomcat镜像内部运行端口，必须与Dockerfile一致
