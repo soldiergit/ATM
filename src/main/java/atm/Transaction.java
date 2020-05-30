@@ -68,6 +68,7 @@ public class Transaction {
             case TYPE_EXIT:
                 // 插卡孔状态要变 开关按钮状态要变 显示屏状态要变 数字键盘状态要变
                 ATM machine = ATM.getInstance();
+                machine.setUserType(0);
                 machine.setState(ATM.IDLE);
                 machine.getCardSlot().eject();
                 machine.getSwitchButton().stateChange(ATM.IDLE);

@@ -41,6 +41,9 @@ public class Account {
     // 剩余可输入密码次数
     int surplusInputNum;
 
+    // 用户类型 1-银行工作人员 2-用户
+    int userType;
+
     /**
      * 取款
      */
@@ -205,5 +208,13 @@ public class Account {
 
     public void setSurplusInputNum(int surplusInputNum) {
         this.surplusInputNum = surplusInputNum;
+    }
+
+    public int getUserType() {
+        return userType;
+    }
+
+    public void setUserType(int userType) {
+        this.userType = userType;
     }
 }

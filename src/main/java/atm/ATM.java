@@ -32,6 +32,8 @@ public class ATM {
 	private CardSlot card_slot = null;
 	// 数字键盘对象
 	private DigitButton bton_digit = null;
+	// 用户类型
+	private int userType;
 	
 	public Session getSession() {
 		return this.session;
@@ -56,7 +58,11 @@ public class ATM {
 	public void setState(int state) {
 		this.state = state;	
 	}
-	
+
+	public void setUserType(int userType) {
+		this.userType = userType;
+	}
+
 	/**
 	 * 一个私有的构造器。之所以把这个构造器定义为私有，是不想外部可以使用new
 	 * 来实例化一个实例。唯一的实例化方法是通过getInstance方法。
@@ -70,6 +76,7 @@ public class ATM {
 		btn_switch = new SwitchButton();
 		card_slot = new CardSlot();
 		bton_digit = new DigitButton();
+		userType = 0;
 	}
 
 	/**
@@ -155,6 +162,8 @@ public class ATM {
 		output += "\"cardslot\":" + this.card_slot.toString();
 		output += ",";
 		output += "\"digitbutton\":" + this.bton_digit.toString();
+		output += ",";
+		output += "\"usertype\":" + this.userType;
 		output += "}";
 		return output;
 	}

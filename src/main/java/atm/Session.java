@@ -33,6 +33,8 @@ public class Session {
     private int state = NOTREADY;
     // 此会话对应的账户
     private Account acct = null;
+    // 用户类型
+    private Integer userType = null;
     // 当前的交易
     private Transaction trans = null;
 
@@ -125,6 +127,9 @@ public class Session {
                             instance.getDisplay().setText("请选择您需要的业务：" + "<br>" + "1:取款 2:存款 3:转账 4:查询 5:修改密码  0:退出");
                             instance.getDigitButton().stateChange(0, 1, "TransactionServlet");
 
+                            // 用户类型
+                            instance.setUserType(account.getUserType());
+
                         }
                         // 账户密码不正确
                         else {
@@ -139,9 +144,16 @@ public class Session {
                             }
 
                         }
+                    } else {
+                        // 用户类型
+                        this.userType = null;
                     }
                     // 剩余输入次数小于0
                 } else {
+
+                    // 用户类型
+                    this.userType = null;
+
                     instance.getDisplay().setText("账户连续五次输入密码不正确，将暂停电子渠道和自助设备使用，仅能持卡通过建行网点柜面交易。");
                 }
             }
@@ -167,5 +179,13 @@ public class Session {
         output += "\"state\":" + this.state;
         output += "}";
         return output;
+    }
+
+    public Integer getUserType() {
+        return userType;
+    }
+
+    public void setUserType(Integer userType) {
+        this.userType = userType;
     }
 }

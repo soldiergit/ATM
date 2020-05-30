@@ -58,6 +58,7 @@ public class LoginDao {
                 account.setFullName(rs.getString(4));
                 account.setBalance(rs.getDouble(5));
                 account.setSurplusInputNum(rs.getInt(6));
+                account.setUserType(rs.getInt(7));
             }
         } catch (Exception e) {
             e.printStackTrace();
